@@ -1,17 +1,24 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from "react-redux"
 import { fetchPassengers } from '../actions';
+import { selectUser } from '../reducers/passangers';
+import { useSelector } from 'react-redux'
 
-const Passangers =() => {    
+const Passangers = () => {    
     const dispatch = useDispatch();
 
     useEffect(() => {
-    //   dispatch({type: "FETCH_PASSENGERS"})
       dispatch(fetchPassengers())      
-    } )
+    },[dispatch] )
     
+    const selPassengers = useSelector(selectUser)
+    console.log("selPassengers:", selPassengers)
+    
+
   return (
-    <div>Passangers</div>
+    <>
+        <div>Passangers component</div>    
+    </>
   )
 }
 
